@@ -1,0 +1,50 @@
+.import {
+  margin: 16px 10px 10px;
+}
+
+.import .title {
+  font-size: 123.1%;
+  font-weight: bold;
+  padding-bottom: 1.2em;
+}
+
+.import .row {
+  padding: 1.1em;
+  height: 2.5em;
+}
+
+.import .last-row {
+  padding: 1.1em 1.1em 0.5em 1.1em;
+  height: 2em;
+}
+
+.import .row div, .import .import-note div, .import .last-row div {
+  float: left;
+}
+
+.import .label {
+  padding: 0.2em 0.8em 0 1em;
+  width: 18em;
+  font-weight: bold;
+}
+
+.import span {
+  margin-right: 1em;
+}
+
+.import input[type=checkbox] {
+  padding-left: 1.2em;
+}
+
+.import .apply {
+  clear: both;
+  padding: 2em;
+}
+
+.import .yui-button button, .import .yui-button button a {
+  min-height: 1.75em;
+}
+
+.import .import-note {
+  padding: 0 1.1em 1em 2.2em;
+}

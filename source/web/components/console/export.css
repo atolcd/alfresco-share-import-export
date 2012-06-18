@@ -1,0 +1,50 @@
+.export {
+  margin: 16px 10px 10px;
+}
+
+.export .title {
+  font-size: 123.1%;
+  font-weight: bold;
+  padding-bottom: 1.2em;
+}
+
+.export .row {
+  padding: 1.1em;
+  height: 2.5em;
+}
+
+.export .extended-row {
+  padding: 1.1em 1.1em 0.5em 1.1em;
+  height: 2em;
+}
+
+.export .row div, .export .export-note div, .export .extended-row div {
+  float: left;
+}
+
+.export .label {
+  padding: 0.2em 0.8em 0 1em;
+  width: 18em;
+  font-weight: bold;
+}
+
+.export span {
+  margin-right: 1em;
+}
+
+.export input[type=checkbox] {
+  padding-left: 1.2em;
+}
+
+.export .apply {
+  clear: both;
+  padding: 2em;
+}
+
+.export .yui-button button, .export .yui-button button a {
+  min-height: 1.75em;
+}
+
+.export .export-note {
+  padding: 0 1.1em 1em 2.2em;
+}

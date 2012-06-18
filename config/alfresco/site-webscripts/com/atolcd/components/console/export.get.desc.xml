@@ -1,0 +1,6 @@
+<webscript>
+  <shortname>Admin Console Export Manager Tool</shortname>
+  <description>Administration Console - Export Manager Tool</description>
+  <url>/components/console/export</url>
+  <family>admin-console</family>
+</webscript>

@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Exporter Action</shortname>
+  <description>Export metadata and content of a space</description>
+  <format default="json" />
+  <authentication>admin</authentication>
+  <transaction>required</transaction>
+  <url>/slingshot/export/create-action</url>
+  <lifecycle>internal</lifecycle>
+</webscript>

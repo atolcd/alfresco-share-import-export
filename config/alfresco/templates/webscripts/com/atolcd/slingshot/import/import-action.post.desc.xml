@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>Importer Action</shortname>
+  <description>Extract content and folder from the archive</description>
+  <format default="json" />
+  <authentication>admin</authentication>
+  <transaction>required</transaction>
+  <url>/slingshot/import/create-action</url>
+  <lifecycle>internal</lifecycle>
+</webscript>

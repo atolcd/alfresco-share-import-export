@@ -1,0 +1,6 @@
+<webscript>
+  <shortname>Admin Console Import Manager Tool</shortname>
+  <description>Administration Console - Import Manager Tool</description>
+  <url>/components/console/import</url>
+  <family>admin-console</family>
+</webscript>
