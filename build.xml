@@ -1,8 +1,13 @@
-<project basedir="." default="dist-jar" name="Build Script">
+<project basedir="." default="dist-jar" name="Import/Export for Share Build Script">
 
   <!-- Allow override properties -->
+  <property file="module.properties" />
   <property file="build.properties" />
   <property file="${user.home}/build.properties" />
+
+  <property name="jar.file.name" value="${jar.name}-${module.version}.jar" />
+  <property name="amp.alfresco.file.name" value="${amp.alfresco.name}-v${module.version}.amp" />
+  <property name="amp.share.file.name" value="${amp.share.name}-v${module.version}.amp" />
 
   <property name="config.includes" value="**/*.*" />
   <property name="config.excludes" value="" />
@@ -17,7 +22,6 @@
   <property name="build.jar.dir" value="${build.dir}/jar" />
   <property name="dist.dir" value="${basedir}/dist" />
 
-  <property name="alfresco.sdk.dir" value="/opt/alfresco/sdk" />
   <property name="build.compile.dir" value="${build.dir}/classes" />
   <property name="java.src.dir" value="${basedir}/source/java" />
   <property name="javac.debug" value="off" />
@@ -51,8 +55,9 @@
 
   <!-- Create required prerequisite directory structure -->
   <target name="prepare" description="Create initial build structures">
-     <mkdir dir="${build.dir}" />
+    <mkdir dir="${build.dir}" />
     <mkdir dir="${dist.dir}" />
+    <mkdir dir="${build.compile.dir}" />
   </target>
 
 
@@ -64,8 +69,8 @@
     </fileset>
   </path>
 
-  <target name="compile" description="Compile Java source code">
-    <mkdir dir="${build.compile.dir}" />
+  <available file="${java.src.dir}" type="dir" property="lib.java.src.exists" />
+  <target name="compile" description="Compile Java source code" if="lib.java.src.exists">
     <javac srcdir="${java.src.dir}" destdir="${build.compile.dir}" debug="${javac.debug}">
       <classpath>
         <path refid="compile.classpath" />
@@ -124,7 +129,7 @@
   <!--                                                              -->
   <target name="dist-jar" depends="clean, prepare, build-jar"
     description="Build a JAR file containing configuration and resource files">
-    <jar destfile="${dist.dir}/${jar.name}">
+    <jar destfile="${dist.dir}/${jar.file.name}">
        <fileset dir="${build.jar.dir}" />
     </jar>
   </target>
@@ -133,13 +138,20 @@
   <!--                                                                   -->
   <!--       Assemble configuration and resource files in AMP files      -->
   <!--                                                                   -->
-  <target name="build-amp" description="Assemble the configuration and resource files in an AMP file structure" depends="compile">
+  <!-- Package Alfresco JAR file -->
+  <target name="package-alfresco-jar" depends="compile">
+    <jar destfile="${build.dir}/${jar.file.name}">
+      <fileset dir="${build.dir}/classes" excludes="**/*Test*" includes="**/*.class" />
+    </jar>
+  </target>
+
+  <target name="build-amp" description="Assemble the configuration and resource files in an AMP file structure" depends="package-alfresco-jar">
     <!-- Alfresco module -->
     <zip destfile="${dist.dir}/${amp.alfresco.file.name}" update="true">
       <zipfileset file="${basedir}/module.properties" />
-      <zipfileset dir="${config.dir}/alfresco/extension" prefix="config/alfresco/module/${alfresco.module.id}" />
+      <zipfileset dir="${config.dir}/alfresco/extension" prefix="config/alfresco/module/${module.id}" />
       <zipfileset dir="${config.dir}/alfresco/templates" prefix="config/alfresco/extension/templates" />
-      <zipfileset dir="${build.compile.dir}" prefix="config" includes="**/*.class" />
+      <zipfileset file="${build.dir}/${jar.file.name}" prefix="lib" />
     </zip>
 
     <!--  Share module   -->
