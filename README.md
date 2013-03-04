@@ -15,7 +15,7 @@ To build JAR file, run the following command from the base project directory:
 
         ant dist-jar
 
-If you want to build AMP file, run the following command:
+If you want to build AMP files, run the following command:
 
         ant dist-amp
 
