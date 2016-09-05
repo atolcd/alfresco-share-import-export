@@ -6,3 +6,4 @@
 <@script type="text/javascript" src="${page.url.context}/res/components/console/consoletool.js"></@script>
 <@script type="text/javascript" src="${page.url.context}/res/components/console/import.js"></@script>
 <@script type="text/javascript" src="${page.url.context}/res/modules/documentlibrary/global-folder.js"></@script>
+<@script type="text/javascript" src="${page.url.context}/res/components/common/common-component-style-filter-chain.js"></@script>
